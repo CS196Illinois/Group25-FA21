@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title></title>
     <meta charset="windows-1252">
@@ -8,26 +9,44 @@
         .container {
             overflow: hidden
         }
+
         .tab {
             float: left;
         }
+
         .tab-2 {
             margin-left: 50px
         }
+
         .tab-2 input {
             display: block;
             margin-bottom: 10px
         }
+
         tr {
             transition: all .25s ease-in-out
         }
+
         tr:hover {
             background-color: #EEE;
             cursor: pointer
         }
     </style>
 </head>
+
 <body>
+    <table>
+        <tr>
+            <th>Traingex</th>
+            <th><a href="{% url 'Dashboard:dashboard' %}">Dashboard</a></th>
+            <th><a href="{% url 'Dashboard:exercise' %}">Exercise</a></th>
+            <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
+            <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
+            <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
+
+        </tr>
+    </table>
+
     <h1>Tracking the User's Sleep</h1>
     Enter how many hours you want to sleep every night: <input type="number" value="" id="sl">
     <br>
@@ -38,13 +57,13 @@
     <b> Your Sleep Goal: </b>
     <span id="shleep"></span>
     <script>
-      var sg;
-      var n = 0;
-      var m = 0;
-      var std = 0;
+        var sg;
+        var n = 0;
+        var m = 0;
+        var std = 0;
         function sleepg() {
-          sg = document.getElementById("sl").value;
-          document.getElementById("shleep").innerHTML = sg + " hours";
+            sg = document.getElementById("sl").value;
+            document.getElementById("shleep").innerHTML = sg + " hours";
         }
     </script>
     <br>
@@ -79,7 +98,7 @@
     <br>
     <h2>How well you are doing:</h2>
     <span id="sleepstd"></span>
-    <div style="width:800px;height:50px;border:1px solid #100; background-color: Green" id = "box"></div>
+    <div style="width:800px;height:50px;border:1px solid #100; background-color: Green" id="box"></div>
     <script>
         var rIndex,
             table = document.getElementById("table");
@@ -108,17 +127,17 @@
             return isEmpty;
         }
         function addHtmlTableRow() {
-            if (!checkEmptyInput()) {                
+            if (!checkEmptyInput()) {
                 var newRow = table.insertRow(table.length),
-                cell1 = newRow.insertCell(0),
-                cell2 = newRow.insertCell(1),
-                cell3 = newRow.insertCell(2),
-                cell4 = newRow.insertCell(3),
-                dat = document.getElementById("dat").value,
-                sleep = document.getElementById("sleep").value,
-                tim = document.getElementById("tim").value;
+                    cell1 = newRow.insertCell(0),
+                    cell2 = newRow.insertCell(1),
+                    cell3 = newRow.insertCell(2),
+                    cell4 = newRow.insertCell(3),
+                    dat = document.getElementById("dat").value,
+                    sleep = document.getElementById("sleep").value,
+                    tim = document.getElementById("tim").value;
                 feel = document.getElementById("feel").value;
-              
+
                 cell1.innerHTML = dat;
                 cell2.innerHTML = sleep;
                 cell3.innerHTML = tim;
@@ -126,14 +145,14 @@
 
                 n = n + 1;
                 m = m + Math.abs(sleep - sg);
-                std = m/n;
+                std = m / n;
                 document.getElementById("sleepstd").innerHTML = std;
-                if(std <= 2) {
-                  document.getElementById("box").style.backgroundColor = "Green";
+                if (std <= 2) {
+                    document.getElementById("box").style.backgroundColor = "Green";
                 } else if (std <= 4) {
-                  document.getElementById("box").style.backgroundColor = "Yellow";
+                    document.getElementById("box").style.backgroundColor = "Yellow";
                 } else {
-                  document.getElementById("box").style.backgroundColor = "Red";
+                    document.getElementById("box").style.backgroundColor = "Red";
                 }
                 selectedRowToInput();
             }
@@ -152,4 +171,5 @@
         selectedRowToInput();
     </script>
 </body>
+
 </html>

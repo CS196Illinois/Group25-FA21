@@ -12,36 +12,28 @@ from django.contrib.auth import authenticate, login, logout
 from .models import *
 import time
 
+
 # Create your views here.
 
-
-def userMacros(request):
-    macros = Macro.objects.all()
-    return render(request, 'index.html', {'userMacros': macros})
-# return the home pcal
-def home(request):
-    return render(request, 'index.html')
-def dashboard(request):
-    return render(request, 'dashboard.html')
-def diet(request):
-    return render(request, 'diet.html')
-def exercise(request):
-    return render(request, 'exercise.html')
-def form(request):
-    return render(request, 'form.html')
 def loginPage(request):
+
+    if request.user.is_authenticated:
+        return render(request, 'index.html')
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect('/dashboard/')
-        else: 
+            messages.info(request, 'succesfully logged in')
+        else:
             messages.info(request, 'username or password is incorrect')
 
     context = {}
     return render(request, 'login.html', context)
+
+
 def register(request):
     form = CreateUserForm()
     if(request.method == 'POST'):
@@ -49,7 +41,47 @@ def register(request):
         if(form.is_valid()):
             form.save()
             messages.success(request, 'Account Successfully Created!')
-    context = {'form':form}
+    context = {'form': form}
     return render(request, 'register.html', context)
+
+
+def dashboard(request):
+    if request.user.is_authenticated:
+        return render(request, 'index.html')
+    else:
+        return render(request, 'login.html')
+
+
+def diet(request):
+    if request.user.is_authenticated:
+        return render(request, 'diet.html')
+    else:
+        return render(request, 'login.html')
+
+
+def exercise(request):
+    if request.user.is_authenticated:
+        return render(request, 'exercise.html')
+    else:
+        return render(request, 'login.html')
+
+
+def form(request):
+    if request.user.is_authenticated:
+        return render(request, 'form.html')
+    else:
+        return render(request, 'login.html')
+
+
 def sleep(request):
-    return render(request, 'sleep.html')
+    if request.user.is_authenticated:
+        return render(request, 'sleep.html')
+    else:
+        return render(request, 'login.html')
+
+
+def logout_view(request):
+    if request.user.is_authenticated:
+        logout(request)
+    else:
+        print("not logged in")

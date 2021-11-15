@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 </head>
+
 <body>
+    <table>
+        <tr>
+            <th>Traingex</th>
+            <th><a href="{% url 'Dashboard:dashboard' %}">Dashboard</a></th>
+            <th><a href="{% url 'Dashboard:exercise' %}">Exercise</a></th>
+            <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
+            <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
+            <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
+        </tr>
+    </table>
     <h1>Exercise Score placeholder</h1>
     <h1>Diet Score placeholder</h1>
-    <h1>Sleep Socre placeholder</h1> 
+    <h1>Sleep Socre placeholder</h1>
 </body>
+
 </html>

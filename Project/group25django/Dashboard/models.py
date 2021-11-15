@@ -5,12 +5,10 @@ from django.db.models.deletion import CASCADE
 
 
 class User(models.Model):
-    first_name = models.CharField(max_length = 40)
-    last_name = models.CharField(max_length = 40)
-    email = models.CharField(max_length = 75)
-    cal = models.IntegerField()
-    username = models.CharField(max_length = 30)
-    permission = models.BooleanField(default = False)
+    firstName = models.CharField(max_length=40)
+    lastName = models.CharField(max_length=40)
+    email = models.CharField(max_length=75)
+    age = models.IntegerField()
 
     def __str__(self):
         return self.firstName

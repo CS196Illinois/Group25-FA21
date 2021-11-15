@@ -45,12 +45,12 @@
             <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
             <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
             <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
-            <th><a href="{% url 'Dashboard:login' %}">Login</a></th>
-            <th><a href="{% url 'Dashboard:register' %}">Register</a> </th>
+            <th><a href="{% url 'Dashboard:logout' %}">Logout</a></th>
+
         </tr>
     </table>
-    
-    <h1>User Record: Welcome back Steven</h1>
+
+    <h1>User Record: Welcome back, {{ firstname }}!</h1>
 
     Enter your height (in): <input type="number" value="" id="height">
     <br>
@@ -80,11 +80,11 @@
 
             var sel = document.getElementsByName("goal");
             if (sel[0].checked) {
-                document.getElementById("macros").innerHTML = "Based on your BMI and goal, you should eat " + 0.85 * w + " g of protein, " + 0.4 * w + " g of fat and rest in carbs. Please track your daily macros below to meet these goals."
+                document.getElementById("macros").innerHTML = "Based on your BMI and goal, you should eat " + 0.85 * w + " g of protein, " + 0.4 * w + " g of fat and the rest of your calories in carbs. Please track your daily macros below to meet these goals."
             } else if (sel[1].checked) {
-                document.getElementById("macros").innerHTML = "Based on your BMI and goal, you should eat " + 0.85 * w + "g of protein" + 0.4 * w + " g of fat" + "and rest in carbs. Please track your daily macros below to meet these goals."
+                document.getElementById("macros").innerHTML = "Based on your BMI and goal, you should eat " + 0.85 * w + " g of protein, " + 0.4 * w + " g of fat and the rest of your calories in carbs. Please track your daily macros below to meet these goals."
             } else {
-                document.getElementById("macros").innerHTML = "Based on your BMI and goal, you should eat " + 0.85 * w + "g of protein" + 0.4 * w + " g of fat" + "and rest in carbs. Please track your daily macros below to meet these goals."
+                document.getElementById("macros").innerHTML = "Based on your BMI and goal, you should eat " + 0.85 * w + " g of protein, " + 0.4 * w + " g of fat and the rest of your calories in carbs. Please track your daily macros below to meet these goals."
             }
 
         }

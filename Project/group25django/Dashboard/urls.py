@@ -11,12 +11,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    url('^$', views.userMacros),
+    url('^$', views.loginPage),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('diet/', views.diet, name='diet'),
     path('exercise/', views.exercise, name='exercise'),
     path('form/', views.form, name='form'),
     path('login/', views.loginPage, name='login'),
     path('register/', views.register, name='register'),
-    path('sleep/', views.sleep, name='sleep')
+    path('sleep/', views.sleep, name='sleep'),
+    path('logout/', views.logout, name="logout")
 ]
